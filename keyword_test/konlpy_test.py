@@ -1,6 +1,7 @@
 from konlpy.tag import Okt #형태소 분석기
 from collections import Counter # 키워드 카운트 세기
 import re # 정규표현식
+import time
 
 # 테스트용 방문기록 리스트
 visit_titles = [
@@ -49,8 +50,15 @@ visit_titles = [
     "[토익&토익Speaking] '다행히도 4시부터 4시 30분까지가 자유 시간입니다.'의 영어표현은?",
     "내게쓴메일함(6) : 네이버 메일",
     "Redis DB 특징과 사용법",
-    "KoNLPy 라이브러리 설명"
+    "KoNLPy 라이브러리 설명",
+    "[SSAFY취업지원센터] 다대다 온/오프 모의면접 컨설팅 신청(25년 3월 24일~26일)",
+    "(101) CarShop프로젝트 시연 - YouTube",
+    "최종관통 - 프레젠테이션 - Canva",
+    "[SSAFY] IT포트폴리오 실습 양식(타이틀 입력하기!)"
 ]
+
+start_time = time.time()
+
 
 # 불필요한 단어 리스트 (조사, 일반적인 단어 등)
 stopwords = {"및", "이력", "할 일", "작성글", "홈페이지", "설명", "도움", "서비스"}
@@ -77,3 +85,9 @@ keyword_counts = extract_keywords(visit_titles)
 print("방문기록에서 추출된 주요 키워드 TOP :")
 for word, count in keyword_counts.most_common():# 정렬해서 보여주겠다.
     print(f"- {word}: {count}회")
+
+# visit_titles의 사이즈
+
+end_time = time.time()
+total_time = end_time - start_time
+print(f"\n⏱ 총 실행 시간: {total_time:.2f}초")
