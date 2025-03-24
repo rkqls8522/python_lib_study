@@ -6,6 +6,7 @@ import time
 # 가져올 URL 리스트
 urls = [
     "https://velog.io/@panda_love/API-Rest-Restful-Rest-API-Restful-API-%EA%B0%9C%EB%85%90%EC%B0%A8%EC%9D%B4",
+    "https://velog.io/@panda_love/API-Rest-Restful-Rest-API-Restful-API-%EA%B0%9C%EB%85%90%EC%B0%A8%EC%9D%B4",
     "https://nunbu.tistory.com/140",
     "https://n.news.naver.com/article/031/0000915382?cds=news_media_pc&type=editn",
     "https://m.blog.naver.com/winsweet/222150766228",

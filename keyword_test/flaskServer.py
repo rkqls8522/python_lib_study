@@ -10,8 +10,8 @@ load_start = time.time()
 
 
 # kw_model = KeyBERT(model='sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
-# kw_model = KeyBERT(model='sentence-transformers/paraphrase-MiniLM-L6-v2')
-kw_model = KeyBERT(model='distiluse-base-multilingual-cased-v2')
+kw_model = KeyBERT(model='sentence-transformers/paraphrase-MiniLM-L6-v2')
+# kw_model = KeyBERT(model='distiluse-base-multilingual-cased-v2')
 
 
 load_end = time.time()
