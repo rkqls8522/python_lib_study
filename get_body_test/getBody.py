@@ -29,7 +29,7 @@ def extract_main_content(url):
     return main_text
 
 # 사용 예시
-url = "https://velog.io/@panda_love/API-Rest-Restful-Rest-API-Restful-API-%EA%B0%9C%EB%85%90%EC%B0%A8%EC%9D%B4"
+url = "https://namu.wiki/w/%EC%B2%AD%EB%85%84%EB%82%B4%EC%9D%BC%EC%B1%84%EC%9B%80%EA%B3%B5%EC%A0%9C"
 main_content = extract_main_content(url)
 # print(main_content[:1000])  # 길면 앞 1000자만 출력
 print(main_content)
