@@ -1,0 +1,12 @@
+Flask
+requests
+beautifulsoup4
+aiohttp
+yake
+flask-cors
+pymysql
+fastapi
+uvicorn
+pydantic
+python-dotenv
+dbutils

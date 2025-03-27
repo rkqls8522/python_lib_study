@@ -1,0 +1,6 @@
+Flask
+requests
+beautifulsoup4
+aiohttp
+yake
+flask-cors

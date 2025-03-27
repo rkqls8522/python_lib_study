@@ -1,0 +1,13 @@
+#USE s12p12a408;
+
+DROP TABLE IF EXISTS schedules;
+CREATE TABLE schedules (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId VARCHAR(50) NOT NULL,
+    content TEXT NOT NULL,
+    ExpireTime DATETIME NOT NULL,
+    AlarmTime DATETIME NOT NULL
+);
+SHOW PROCESSLIST;
+SELECT * FROM schedules;
+SELECT * FROM member;
