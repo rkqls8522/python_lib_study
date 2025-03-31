@@ -2,8 +2,8 @@
     // 현재 페이지 URL 획득
     const currentUrl = window.location.href;
     
-    // 백엔드의 /recommend 엔드포인트 호출
-    fetch("http://localhost:5000/recommend", {
+    // 백엔드의 /recommendations 엔드포인트 호출
+    fetch("http://localhost:8000/ai/recommendations", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -12,7 +12,9 @@
     })
     .then(response => response.json())
     .then(data => {
-        if(data.recommendations && data.recommendations.length > 0){
+        const recommendations = data.content;
+
+        if (Array.isArray(recommendations) && recommendations.length > 0) {
             // 추천 결과 오버레이 생성
             const overlay = document.createElement("div");
             overlay.id = "harry-overlay";
@@ -28,12 +30,12 @@
             overlay.style.fontFamily = "Arial, sans-serif";
             overlay.style.fontSize = "14px";
             overlay.innerHTML = "<h3>관련 페이지 추천</h3>";
-  
-            data.recommendations.forEach(item => {
+
+            recommendations.forEach(item => {
                 const recDiv = document.createElement("div");
                 recDiv.style.marginBottom = "10px";
                 recDiv.style.cursor = "pointer";
-  
+
                 // 썸네일 이미지
                 const img = document.createElement("img");
                 img.src = item.thumbnail;
@@ -41,23 +43,24 @@
                 img.style.width = "100%";
                 img.style.height = "auto";
                 recDiv.appendChild(img);
-  
+
                 // 제목 표시
                 const titleEl = document.createElement("div");
                 titleEl.textContent = item.title;
                 titleEl.style.fontWeight = "bold";
                 titleEl.style.marginTop = "5px";
                 recDiv.appendChild(titleEl);
-  
+
                 // 클릭 시 새 탭에서 링크 열기
                 recDiv.addEventListener("click", function(){
                     window.open(item.link, "_blank");
                 });
+
                 overlay.appendChild(recDiv);
             });
+
             document.body.appendChild(overlay);
         }
     })
     .catch(err => console.error("harry recommendation error:", err));
-  })();
-  
+})();

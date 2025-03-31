@@ -1,5 +1,4 @@
 import requests
-import urllib.parse
 
 def google_search(query):
     print("=== DEBUG: Query:", query)
@@ -13,6 +12,7 @@ def google_search(query):
         'q': query,
         'key': api_key,
         'cx': cx,
+        'num': 3,
     }
     
     # 구글 Custom Search API 요청
@@ -29,13 +29,22 @@ def google_search(query):
     search_results = response.json()
     
     results = []
+    default_thumbnail = "https://thebook.io/img/080412/243.jpg"
     
-    # 검색 결과에서 링크와 제목을 추출합니다.
+    # 검색 결과에서 제목, 링크, 썸네일 이미지 추출
     if 'items' in search_results:
-        for item in search_results['items'][:3]:  # 최대 3개의 검색 결과만 추출
-            title = item['title']
-            link = item['link']
-            results.append({"title": title, "link": link})
+        for item in search_results['items']:  
+            title = item.get('title')
+            link = item.get('link')
+            thumbnail = item.get('pagemap', {}).get('cse_thumbnail', [{}])[0].get('src')
+            # 썸네일 이미지가 없으면 기본 이미지 사용
+            if not thumbnail:
+                thumbnail = default_thumbnail
+            results.append({
+                "title": title, 
+                "link": link,
+                "thumbnail": thumbnail
+            })
     
     print("=== DEBUG: Search results count:", len(results))
     return results
